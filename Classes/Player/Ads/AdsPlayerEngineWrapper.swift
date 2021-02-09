@@ -64,7 +64,7 @@ public class AdsPlayerEngineWrapper: PlayerEngineWrapper, AdsPluginDelegate, Ads
         if self.stateMachine.getState() == .waitingForPrepare {
             self.stateMachine.set(state: .preparing)
             PKLog.debug("will prepare player")
-            super.prepare(self.prepareMediaConfig, mediaAsset: nil)
+            super.prepare(self.prepareMediaConfig)
             self.stateMachine.set(state: .prepared)
         }
         
@@ -80,7 +80,7 @@ public class AdsPlayerEngineWrapper: PlayerEngineWrapper, AdsPluginDelegate, Ads
         }
     }
     
-    override public func prepare(_ config: MediaConfig, mediaAsset: AVURLAsset?) {
+    override public func prepare(_ config: MediaConfig, mediaAsset: AVURLAsset? = nil) {
         self.stateMachine.set(state: .start)
         self.adsPlugin.destroyManager()
         self.isPlayEnabled = false

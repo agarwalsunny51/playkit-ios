@@ -201,7 +201,7 @@ import AVKit
         self.player.destroy()
     }
     
-    open func prepare(_ config: MediaConfig, mediaAsset: AVURLAsset?) {
+    open func prepare(_ config: MediaConfig, mediaAsset: AVURLAsset? = nil) {
         self.player.prepare(config, mediaAsset: mediaAsset)
     }
     

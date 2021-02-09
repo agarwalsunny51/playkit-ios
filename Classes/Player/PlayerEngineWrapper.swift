@@ -120,7 +120,7 @@ public class PlayerEngineWrapper: NSObject, PlayerEngine {
         return playerEngine?.loadedTimeRanges
     }
     
-    public func loadMedia(from mediaSource: PKMediaSource?, mediaAsset: AVURLAsset?, handler: AssetHandler) {
+    public func loadMedia(from mediaSource: PKMediaSource?, mediaAsset: AVURLAsset? = nil, handler: AssetHandler) {
         playerEngine?.loadMedia(from: mediaSource, mediaAsset: mediaAsset, handler: handler)
     }
     
@@ -164,7 +164,7 @@ public class PlayerEngineWrapper: NSObject, PlayerEngine {
         playerEngine?.destroy()
     }
     
-    public func prepare(_ config: MediaConfig, mediaAsset: AVURLAsset?) {
+    public func prepare(_ config: MediaConfig, mediaAsset: AVURLAsset? = nil) {
         playerEngine?.prepare(config, mediaAsset: mediaAsset)
     }
     

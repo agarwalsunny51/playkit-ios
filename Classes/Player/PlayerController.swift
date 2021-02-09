@@ -311,7 +311,7 @@ class PlayerController: NSObject, Player {
         self.removeAssetRefreshObservers()
     }
     
-    func prepare(_ mediaConfig: MediaConfig, mediaAsset: AVURLAsset?) {
+    func prepare(_ mediaConfig: MediaConfig, mediaAsset: AVURLAsset? = nil) {
         self.currentPlayer.prepare(mediaConfig, mediaAsset: mediaAsset)
         
         if let source = self.selectedSource {

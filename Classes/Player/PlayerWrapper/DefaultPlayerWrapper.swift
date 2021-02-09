@@ -46,7 +46,7 @@ class DefaultPlayerWrapper: NSObject, PlayerEngine {
         return nil
     }
     
-    func loadMedia(from mediaSource: PKMediaSource?, mediaAsset: AVURLAsset?, handler: AssetHandler) {
+    func loadMedia(from mediaSource: PKMediaSource?, mediaAsset: AVURLAsset? = nil, handler: AssetHandler) {
         printInvocationWarning("\(#function)")
     }
     
@@ -170,7 +170,7 @@ class DefaultPlayerWrapper: NSObject, PlayerEngine {
         printInvocationWarning("\(#function)")
     }
     
-    func prepare(_ mediaConfig: MediaConfig, mediaAsset: AVURLAsset?) {
+    func prepare(_ mediaConfig: MediaConfig, mediaAsset: AVURLAsset? = nil) {
         printInvocationWarning("\(#function)")
     }
     

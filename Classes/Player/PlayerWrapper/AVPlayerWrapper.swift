@@ -103,7 +103,7 @@ open class AVPlayerWrapper: NSObject, PlayerEngine {
         return self.currentPlayer.playbackType
     }
     
-    open func loadMedia(from mediaSource: PKMediaSource?, mediaAsset: AVURLAsset?, handler: AssetHandler) {
+    open func loadMedia(from mediaSource: PKMediaSource?, mediaAsset: AVURLAsset? = nil, handler: AssetHandler) {
         if mediaAsset != nil {
             self.assetToPrepare = mediaAsset
             self.prepareSemaphore.signal()
@@ -236,7 +236,7 @@ open class AVPlayerWrapper: NSObject, PlayerEngine {
         self.removeAssetRefreshObservers()
     }
     
-    public func prepare(_ mediaConfig: MediaConfig, mediaAsset: AVURLAsset?) {
+    public func prepare(_ mediaConfig: MediaConfig, mediaAsset: AVURLAsset? = nil) {
         // set background thread to make sure main thread is not stuck while waiting
         DispatchQueue.global().async {
             // wait till assetToPrepare is set

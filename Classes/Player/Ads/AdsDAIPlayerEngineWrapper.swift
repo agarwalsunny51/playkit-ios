@@ -157,7 +157,7 @@ public class AdsDAIPlayerEngineWrapper: PlayerEngineWrapper, AdsPluginDelegate, 
         if stateMachine.getState() == .waitingForPrepare {
             stateMachine.set(state: .preparing)
             PKLog.debug("Will prepare player")
-            super.prepare(self.prepareMediaConfig, mediaAsset: nil)
+            super.prepare(self.prepareMediaConfig)
             stateMachine.set(state: .prepared)
         }
         
@@ -168,7 +168,7 @@ public class AdsDAIPlayerEngineWrapper: PlayerEngineWrapper, AdsPluginDelegate, 
         if stateMachine.getState() == .waitingForPrepare {
             preparePlayerIfNeeded()
             if let mediaSource = mediaSource, let handler = handler {
-                super.loadMedia(from: mediaSource, mediaAsset: nil, handler: handler)
+                super.loadMedia(from: mediaSource, handler: handler)
             }
             if playPerformed {
                 super.play()
@@ -215,8 +215,8 @@ public class AdsDAIPlayerEngineWrapper: PlayerEngineWrapper, AdsPluginDelegate, 
             playerEngine?.currentTime = streamTime
         }
     }
-    
-    public override func loadMedia(from mediaSource: PKMediaSource?, mediaAsset: AVURLAsset?, handler: AssetHandler) {
+
+    public override func loadMedia(from mediaSource: PKMediaSource?, mediaAsset: AVURLAsset? = nil, handler: AssetHandler) {
         reset()
         
         self.mediaSource = mediaSource
@@ -312,7 +312,7 @@ public class AdsDAIPlayerEngineWrapper: PlayerEngineWrapper, AdsPluginDelegate, 
         super.destroy()
     }
     
-    override public func prepare(_ config: MediaConfig, mediaAsset: AVURLAsset?) {
+    override public func prepare(_ config: MediaConfig, mediaAsset: AVURLAsset? = nil) {
         prepareMediaConfig = config
         stateMachine.set(state: .waitingForPrepare)
         do {
@@ -349,7 +349,7 @@ public class AdsDAIPlayerEngineWrapper: PlayerEngineWrapper, AdsPluginDelegate, 
             source.contentUrl = streamURL
         }
         if let mediaSource = mediaSource, let handler = handler {
-            super.loadMedia(from: mediaSource, mediaAsset: nil, handler: handler)
+            super.loadMedia(from: mediaSource, handler: handler)
             
             preparePlayerIfNeeded()
         }
@@ -371,7 +371,7 @@ public class AdsDAIPlayerEngineWrapper: PlayerEngineWrapper, AdsPluginDelegate, 
         // The loader can fail also when going to the background, therefore adding the retry here as well.
         if adRequestTimedOutRetries < maxAdRequestTimedOutRetries, prepareMediaConfig != nil {
             adRequestTimedOutRetries += 1
-            prepare(prepareMediaConfig, mediaAsset: nil)
+            prepare(prepareMediaConfig)
         } else {
             playOriginalMedia()
         }
