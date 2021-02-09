@@ -215,8 +215,8 @@ public class AdsDAIPlayerEngineWrapper: PlayerEngineWrapper, AdsPluginDelegate, 
             playerEngine?.currentTime = streamTime
         }
     }
-    
-    public override func loadMedia(from mediaSource: PKMediaSource?, handler: AssetHandler) {
+
+    public override func loadMedia(from mediaSource: PKMediaSource?, mediaAsset: AVURLAsset? = nil, handler: AssetHandler) {
         reset()
         
         self.mediaSource = mediaSource
@@ -312,7 +312,7 @@ public class AdsDAIPlayerEngineWrapper: PlayerEngineWrapper, AdsPluginDelegate, 
         super.destroy()
     }
     
-    override public func prepare(_ config: MediaConfig) {
+    override public func prepare(_ config: MediaConfig, mediaAsset: AVURLAsset? = nil) {
         prepareMediaConfig = config
         stateMachine.set(state: .waitingForPrepare)
         do {

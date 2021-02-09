@@ -64,7 +64,7 @@ public class AdsEnabledPlayerController : PlayerDecoratorBase, AdsPluginDelegate
         }
     }
     
-    override public func prepare(_ config: MediaConfig) {
+    override public func prepare(_ config: MediaConfig, mediaAsset: AVURLAsset? = nil) {
         self.stateMachine.set(state: .start)
         self.adsPlugin.destroyManager()
         self.isPlayEnabled = false
