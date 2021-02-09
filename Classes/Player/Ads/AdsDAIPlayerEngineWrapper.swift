@@ -420,7 +420,7 @@ public class AdsDAIPlayerEngineWrapper: PlayerEngineWrapper, AdsPluginDelegate, 
     public func adsRequestTimedOut(shouldPlay: Bool) {
         if stateMachine.getState() == .waitingForPrepare, adRequestTimedOutRetries < maxAdRequestTimedOutRetries {
             adRequestTimedOutRetries += 1
-            prepare(prepareMediaConfig, mediaAsset: nil)
+            prepare(prepareMediaConfig)
         } else {
             playOriginalMedia()
         }
