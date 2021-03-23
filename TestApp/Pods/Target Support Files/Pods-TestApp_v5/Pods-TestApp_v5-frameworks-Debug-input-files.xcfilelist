@@ -1,0 +1,7 @@
+${PODS_ROOT}/Target Support Files/Pods-TestApp_v5/Pods-TestApp_v5-frameworks.sh
+${BUILT_PRODUCTS_DIR}/KalturaNetKit/KalturaNetKit.framework
+${BUILT_PRODUCTS_DIR}/ObjcExceptionBridging/ObjcExceptionBridging.framework
+${BUILT_PRODUCTS_DIR}/PlayKit/PlayKit.framework
+${BUILT_PRODUCTS_DIR}/PlayKitUtils/PlayKitUtils.framework
+${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework
+${BUILT_PRODUCTS_DIR}/XCGLogger/XCGLogger.framework
